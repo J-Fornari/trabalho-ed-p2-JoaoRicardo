@@ -1,2 +1,2 @@
-# trabalho-ed-p2-JoaoRicardo
-Trabalho avaliativo P2 em Estrutura de Dados
+## 💻 Documentação teórica, Big-O, Diário de IA e Link do Vídeo
+
