@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador Visual Interativo — BFS vs. DFS (FATEC)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>🚀 Simulador Interativo: Grafos (BFS vs. DFS)</h1>
+      <p>Estrutura de Dados — FATEC Ribeirão Preto | <strong>Tema 4</strong></p>
+    </header>
+
+    <main class="main-content">
+      <!-- Painel Lateral de Controle -->
+      <aside class="control-panel">
+        <h2>🛠️ Controles de Simulação</h2>
+
+        <div class="form-group">
+          <label for="algorithmSelect">Algoritmo:</label>
+          <select id="algorithmSelect">
+            <option value="BFS">BFS (Busca em Largura — Fila FIFO)</option>
+            <option value="DFS">DFS (Busca em Profundidade — Pilha LIFO)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Cenários Pré-configurados:</label>
+          <div class="button-group-vertical">
+            <button id="btnScenarioMedium" class="btn btn-secondary">Caso Médio (Rede Conecta)</button>
+            <button id="btnScenarioWorst" class="btn btn-warning">Pior Caso DFS (Rota Longa vs. Atalho)</button>
+            <button id="btnScenarioDisconnected" class="btn btn-secondary">Grafo Desconexo</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Ações do Algoritmo:</label>
+          <div class="button-grid">
+            <button id="btnPlay" class="btn btn-success">▶ Play</button>
+            <button id="btnStep" class="btn btn-primary">⏭ Step (Passo)</button>
+            <button id="btnPause" class="btn btn-danger" disabled>⏸ Pausar</button>
+            <button id="btnReset" class="btn btn-outline">🔄 Reset</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="speedRange">Velocidade da Animação:</label>
+          <input type="range" id="speedRange" min="200" max="1500" value="600" step="100">
+        </div>
+
+        <div class="metrics-card">
+          <h3>📊 Métricas de Execução</h3>
+          <div class="metric-item">
+            <span>Passo Atual:</span>
+            <strong id="metricStep">0</strong>
+          </div>
+          <div class="metric-item">
+            <span>Operações Acumuladas:</span>
+            <strong id="metricOps">0</strong>
+          </div>
+          <div class="metric-item">
+            <span>Nós Visitados:</span>
+            <strong id="metricVisited">0</strong>
+          </div>
+          <div class="metric-item">
+            <span>Tamanho da Fila/Pilha:</span>
+            <strong id="metricStructureSize">0</strong>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Área de Visualização Principal -->
+      <section class="viewport-panel">
+        <div class="canvas-container">
+          <div class="panel-header">
+            <h3>🌐 Representação Visual do Grafo</h3>
+            <span id="graphLegend" class="legend">
+              <span class="dot dot-unvisited"></span> Não Visitado
+              <span class="dot dot-in-struct"></span> Na Fila/Pilha
+              <span class="dot dot-current"></span> Nó Atual
+              <span class="dot dot-visited"></span> Visitado
+              <span class="dot dot-path"></span> Menor Caminho
+            </span>
+          </div>
+          <canvas id="graphCanvas" width="700" height="420"></canvas>
+        </div>
+
+        <div class="subpanels-grid">
+          <!-- Visualização em Tempo Real da Fila (FIFO) ou Pilha (LIFO) -->
+          <div class="structure-visualizer">
+            <h4 id="structTitle">📥 Estado da Fila (FIFO - BFS)</h4>
+            <div id="structureContainer" class="structure-container">
+              <span class="placeholder-text">Estrutura Vazia</span>
+            </div>
+          </div>
+
+          <!-- Log Explicativo de Passo a Passo -->
+          <div class="log-panel">
+            <h4>📜 Log de Eventos e Execução</h4>
+            <div id="logContent" class="log-content">
+              <p class="log-entry log-info">Aguardando início da simulação. Selecione o algoritmo e clique em Step ou Play.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
