@@ -57,20 +57,23 @@ Considerando um grafo $G = (V, E)$, onde $V$ representa o número total de vért
 
 ## 🤖 Diário de Engenharia com Inteligência Artificial
 
-* **Modelo de IA Utilizado:** Google Gemini 1.5 Pro / Claude 3.5 Sonnet.
-* **Objetivo:** Auxiliar no planejamento modular do algoritmo em Python, suporte na estruturação e estilização da interface web do simulador visual.
+* **Modelo/Ferramenta Utilizada:** Google Gemini Hydrogen 4
+* **Objetivo:** Auxiliar no planejamento modular da classe Grafo em Python, estruturação dos algoritmos BFS/DFS instrumentados e criação da interface interativa em HTML5/Canvas.
 
-### Principais Prompts Utilizados:
-1. **Prompt 1 (Modelagem de Código):**  
-   > *"Crie uma classe `Grafo` em Python baseada em Lista de Adjacência. Implemente os métodos `bfs` (usando `collections.deque`) e `dfs` (usando pilha iterativa), ambos retornando o caminho encontrado, a ordem de visitação e um contador explícito de operações. Adicione type hints e docstrings."*
-2. **Prompt 2 (Construção Visual da Fila/Pilha):**  
-   > *"Desenvolva uma interface web em HTML/CSS/JS que simule visualmente um grafo em Canvas/DOM e mostre em tempo real a transição dos elementos entrando e saindo da Fila (FIFO) na BFS e da Pilha (LIFO) na DFS a cada passo."*
-3. **Prompt 3 (Cenário Comparativo):**  
-   > *"Gere um cenário de teste para o simulador onde o DFS faz um desvio longo (6 arestas) e a BFS encontra o atalho direto (2 arestas), evidenciando a diferença de menor caminho."*
+### Prompts Utilizados:
 
-### Ajuste Manual Realizado:
-* **Problema Encontrado:** Inicialmente, a IA sugeriu um DFS recursivo que acumulava a ordem dos nós visitados sem manter um registro correto do vetor de antecessores para reconstrução limpa do caminho final.
-* **Correção Efetuada:** Modifiquei a implementação da DFS para a versão **iterativa com Pilha explícita (`list.pop()`)**, sincronizando o mapeamento do dicionário de `antecessores` e garantindo paridade conceitual direta entre a Fila da BFS e a Pilha da DFS no simulador visual.
+1. **Prompt 1 (Estrutura de Dados e Algoritmos em Python):**
+   > *"Crie uma classe Grafo em Python baseada em Lista de Adjacência para o Tema 4 da P2 de Estrutura de Dados. Implemente o método `bfs` usando `collections.deque` (Fila FIFO) e o método `dfs` usando Pilha LIFO iterativa. Adicione type hints, docstrings e contadores de operações acumuladas em ambos os métodos."*
+
+2. **Prompt 2 (Simulador Visual Web em Canvas):**
+   > *"Crie a interface visual para o trabalho (pasta `src/demo/`) com index.html, styles.css e app.js. A aplicação deve desenhar um grafo em Canvas e mostrar em tempo real a transição dos elementos na Fila (FIFO) durante a BFS e na Pilha (LIFO) durante a DFS com botões de Play, Step e Reset."*
+
+3. **Prompt 3 (Cenário Comparativo de Menor Caminho):**
+   > *"Monte a estrutura do Cenário 3 de testes no qual a busca DFS faz um desvio longo por profundidade (ex.: A → B → D → E → F → G → H) e a BFS encontra o atalho direto de menor caminho (ex.: A → C → H), comprovando o comportamento Big-O e a garantia de menor caminho da BFS."*
+
+### Relato de Ajuste Manual (Análise Crítica):
+* **Problema Encontrado:** Inicialmente, a IA sugeriu a inclusão das arestas no Cenário 3 inserindo o atalho direto (`A -> C`) antes do ramo profundo (`A -> B`). Por conta do laço de exploração com `reversed()`, a DFS encontrou o atalho antes de explorar o ramo longo.
+* **Ajuste Efetuado:** Ajustei manualmente a ordem de inserção das arestas no arquivo `src/algoritmo.py`, garantindo que `("A", "B")` fosse adicionada antes de `("A", "C")`. Isso forçou a DFS a percorrer todo o ramo profundo primeiro, evidenciando de forma clara a diferença de rota em relação à BFS no terminal e no simulador.
 
 ---
 
