@@ -1,0 +1,29 @@
+======================================================================
+ 🚀 TRABALHO P2 - GRAFOS: BUSCA EM LARGURA (BFS) VS. PROFUNDIDADE (DFS)
+======================================================================
+
+--------------------------------------------------------------------
+📌 CENÁRIO 1: Grafo Conexo Típico (Origem: A, Destino: E)
+--------------------------------------------------------------------
+[BFS - Fila (FIFO)] Visita: ['A', 'B', 'C', 'D', 'E']
+ -> Caminho Encontrado: ['A', 'C', 'E'] | Operações: 25
+[DFS - Pilha (LIFO)] Visita: ['A', 'B', 'D', 'E']
+ -> Caminho Encontrado: ['A', 'B', 'D', 'E'] | Operações: 27
+
+--------------------------------------------------------------------
+📌 CENÁRIO 2: Caso de Borda - Grafo Desconexo (Origem: A, Destino: Z)
+--------------------------------------------------------------------
+[BFS em Grafo Desconexo] Caminho: None | Operações: 12
+ -> Ordem de Nós Visitados: ['A', 'B', 'C']
+
+--------------------------------------------------------------------
+📌 CENÁRIO 3: Pior Caso Comparativo (Diferença de Menor Caminho)
+ Estrutura: A possui um atalho para H (A->C->H: 2 saltos)
+            e um ramo longo em profundidade (A->B->D->E->F->G->H: 6 saltos)
+--------------------------------------------------------------------
+[BFS] Caminho (Menor Garantido): ['A', 'C', 'H'] (2 arestas) | Custo: 20 ops
+[DFS] Caminho Encontrado:        ['A', 'B', 'D', 'E', 'F', 'G', 'H'] (6 arestas) | Custo: 37 ops
+
+✅ Conclusão do Teste: A BFS encontrou a rota ótima de 2 arestas, enquanto a DFS
+   se aprofundou no ramo longo completando uma rota com muito mais arestas.
+======================================================================
