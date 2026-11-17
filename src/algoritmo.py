@@ -213,17 +213,19 @@ if __name__ == "__main__":
     print(" Estrutura: A possui um atalho para H (A->C->H: 2 saltos)")
     print("            e um ramo longo em profundidade (A->B->D->E->F->G->H: 6 saltos)")
     print("--------------------------------------------------------------------")
+# Altere a ordem no Cenário 3 para que a DFS explore o ramo longo primeiro:
     g3 = Grafo(direcionado=True)
-    # Atalho direto
-    g3.adicionar_aresta("A", "C")
-    g3.adicionar_aresta("C", "H")
-    # Ramo longo profundo
+    # 1. Ramo longo profundo (adicionado primeiro)
     g3.adicionar_aresta("A", "B")
     g3.adicionar_aresta("B", "D")
     g3.adicionar_aresta("D", "E")
     g3.adicionar_aresta("E", "F")
     g3.adicionar_aresta("F", "G")
     g3.adicionar_aresta("G", "H")
+
+    # 2. Atalho direto (adicionado depois)
+    g3.adicionar_aresta("A", "C")
+    g3.adicionar_aresta("C", "H")
 
     c_bfs, ops_b, v_bfs = g3.bfs("A", "H")
     c_dfs, ops_d, v_dfs = g3.dfs("A", "H")
