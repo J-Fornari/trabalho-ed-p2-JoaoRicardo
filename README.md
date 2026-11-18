@@ -9,8 +9,8 @@
 
 ## 👤 Identificação do Aluno
 
-* **Nome Completo:** [João Ricardo Assis Fornari]
-* **RA:** [2840482521038]
+* **Nome Completo:** João Ricardo Assis Fornari
+* **RA:** 2840482521038
 * **Tema Escolhido:** **Tema D (Tema 4) — Grafos: Travessias (Busca em Largura - BFS vs. Busca em Profundidade - DFS)**
 
 ---
