@@ -15,13 +15,6 @@
 
 ---
 
-## 🎬 Defesa Técnica em Vídeo
-
-
-> 📌 **Link do Vídeo:** `COLE_SEU_LINK_DO_VIDEO_AQUI`  
-
----
-
 ## 📚 Fundamentação Teórica e Conceitual
 
 As travessias em grafos são procedimentos fundamentais da Ciência da Computação para visitar ou buscar vértices e arestas em uma estrutura de dados de rede.
